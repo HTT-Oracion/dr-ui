@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import DrButton from '@/components/button/src/button'
+import DrUI from './components'
 import './styles/index.scss'
 
-Vue.component(DrButton.name, DrButton)
+Vue.use(DrUI)
 Vue.config.productionTip = false
 
 new Vue({
