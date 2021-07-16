@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "docs:dev": "vuepress dev docs",
+    "docs:dev": "gulp doc && vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
   "dependencies": {
@@ -25,6 +25,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^6.2.2",
+    "gulp-replace": "^1.1.3",
     "node-sass": "^4.12.0",
     "prettier": "^2.2.1",
     "sass-loader": "^8.0.2",

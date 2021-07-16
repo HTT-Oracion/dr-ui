@@ -4,12 +4,17 @@
    </demo-block>
 </template>
 
-<script>
+<script doc>
+//script--ignore--start
+
 export default {
   name: 'button-demo-base'
 }
+//script--ignore--end
 </script>
 
-<style>
-
+<style scoped>
+.demo {
+  color: #fff;
+}
 </style>
