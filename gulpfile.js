@@ -2,12 +2,24 @@ const gulp = require('gulp')
 const path = require('path')
 const fs = require('fs')
 const replace = require('gulp-replace')
+const rename = require('gulp-rename')
+const components = require('./components.json')
+// 有些组件要过滤掉, 包括内置组件和指令组件
+const excludedComponents = [
+  'locale',
+  'loading',
+  'message',
+  'message-box',
+  'notification',
+  'infinite-scroll'
+]
+const needComponents = []
 // doc 打包成文档
 gulp.task('doc', (cb) => {
   return gulp
     .src('./docs/component_origin/*.md')
     .pipe(
-      replace(/:::demo====(\w+)-(.+)====(.*)/g, function (match, p1, p2, p3) {
+      replace(/::demo==(\w+)-(.+)==(.*)/g, function (match, p1, p2, p3) {
         // console.log(match, p1, p2, p3)
         var str = `
 <ClientOnly>
@@ -89,4 +101,33 @@ gulp.task('doc', (cb) => {
       })
     )
     .pipe(gulp.dest('./docs/component'))
+})
+
+gulp.task('vuepress', (cb) => {
+  return gulp
+    .src('./docs/.vuepress/enhanceApp_orgin.js')
+    .pipe(
+      replace(/gulp==(\w+)/g, function (match, p1, p2) {
+        var str = 'enhanceApp_origin由构建出来\n\n'
+        // console.log(match, p1, p2)
+        if (p1 === 'import') {
+          for (let k in components) {
+            if (excludedComponents.indexOf(k) === -1) {
+              needComponents.push(k)
+            }
+            str += `import ${k} from './src/${components[k]}'\n`
+          }
+          console.log(str)
+        }
+
+        if (p1 === 'use') {
+          needComponents.map((item) => {
+            str += `Vue.component(${item}.name,${item}) \n`
+          })
+        }
+        return str
+      })
+    )
+    .pipe(rename('enhanceApp_build.js'))
+    .pipe(gulp.dest('./docs/.vuepress/'))
 })
