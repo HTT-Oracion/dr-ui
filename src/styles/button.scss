@@ -1,7 +1,75 @@
 .dr-button {
-  background: #000;
-  color: #fff;
+  font-size: $font-size-default;
+  color: $white-color;
   outline: none;
-  border: 1px solid #ddd;
+  border: 1px solid $info-color;
   text-align: center;
+  transition: all .2s ease-in-out;
+  margin: 0 4px;
+  padding: 10px 20px;
+  border-radius: $border-radius-default;
+  &:hover {
+    opacity: .8;
+  }
+  &--default {
+    background: $white-color;
+    color: $text-color-default !important;
+  }
+  // 尺寸
+  &--large {
+    padding: 10px 30px;
+    font-size: $font-size-large;
+  }
+  &--small {
+    font-size: $font-size-small;
+    padding: 6px 12px;
+  }
+
+  // 颜色
+  &--primary {
+    background: $primary-color;
+    color: $white-color;
+  }
+
+  &--success {
+    background: $success-color;
+  }
+
+  &--danger {
+    background: $danger-color;
+  }
+
+  &--warning {
+    background: $warning-color;
+  }
+  
+  &--info {
+    background: $info-color;
+  }
+}
+
+// .dr-button  {
+//   &--primary {
+//     background: $white-color;
+//     color: $primary-color;
+//     border-color: $primary-color;
+//     &:hover {
+//       background: $primary-color;
+//       color: $white-color;
+//     }
+//   }
+// }
+.dr-button-plain{
+  .dr-button {
+    &--primary {
+      @extend .dr-button;
+      background:$white-color;
+      color: $primary-color;
+      border-color: $primary-color;
+      &:hover {
+        background: $primary-color;
+        color: $white-color;
+      }
+    }
+  }
 }

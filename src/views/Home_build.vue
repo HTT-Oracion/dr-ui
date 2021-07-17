@@ -4,7 +4,7 @@
     <h2>{{ msg }}</h2>
     <dr-button>123</dr-button>
     <button-demo-base></button-demo-base>
-
+    <button-demo-base></button-demo-base>
   </div>
 </template>
 
@@ -15,7 +15,6 @@ export default {
   name: 'HomeOrigin',
   components: {
     [ButtonDemoBase.name]: ButtonDemoBase
-
   },
   data() {
     return {

@@ -1,0 +1,22 @@
+// 字体
+$font-size-large: 20px;
+$font-size-default: 16px;
+$font-size-small: 14px;
+
+// 圆角
+$border-radius-circle: 50%;
+$border-radius-large: 8px;
+$border-radius-default: 4px;
+$border-radius-small: 2px;
+
+// 阴影
+$box-shadow-defualt: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+// 浅色投影
+$box-shadow-light: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+
+
+// 公共样式
+
+.dr-button-circle {
+  border-radius: $border-radius-circle;
+}

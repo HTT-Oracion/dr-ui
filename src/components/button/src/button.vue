@@ -9,11 +9,11 @@
       type ? 'dr-button--' + type : '',
       buttonSize ? 'dr-button--' + buttonSize : '',
       {
-        'is-disabled': disabled,
-        'is-plain': plain,
-        'is-loading': loading,
-        'is-round': round,
-        'is-circle': circle
+        'dr-button-disabled': disabled,
+        'dr-button-plain': plain,
+        'dr-button-loading': loading,
+        'dr-button-round': round,
+        'dr-button-circle': circle
       }
     ]"
   >
