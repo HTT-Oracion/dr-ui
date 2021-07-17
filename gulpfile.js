@@ -156,8 +156,10 @@ gulp.task('home', (cb) => {
           let n1 = mode[0]
           let n2 = `${mode[1]}-${mode[2]}`
           // 转换成首字母大写并保存
-          homeNeedComponents.push(`${n1}-${n2}`)
-          str += `    <${n1}-${n2}></${n1}-${n2}>\n`
+          if (homeNeedComponents.indexOf(`${n1}-${n2}`) === -1) {
+            homeNeedComponents.push(`${n1}-${n2}`)
+          }
+          str += `    <${n1}-${n2}></${n1}-${n2}>`
         }
         if (mode.length === 1) {
           if (mode[0] === 'import') {
@@ -171,7 +173,7 @@ gulp.task('home', (cb) => {
           if (mode[0] === 'init') {
             _.each(homeNeedComponents, function (item) {
               let itemName = _.upperFirst(_.camelCase(item))
-              str += `    [${itemName}.name]: ${itemName}\n`
+              str += `    [${itemName}.name]: ${itemName},\n`
             })
           }
         }
