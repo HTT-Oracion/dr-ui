@@ -1,5 +1,6 @@
 const gulp = require('gulp')
 const path = require('path')
+const _ = require('lodash')
 const fs = require('fs')
 const replace = require('gulp-replace')
 const rename = require('gulp-rename')
@@ -14,6 +15,15 @@ const excludedComponents = [
   'infinite-scroll'
 ]
 const needComponents = []
+const homeNeedComponents = []
+// const transName = ( name ) => {
+//   let nameArr = name.split('-')
+//   if(nameArr && nameArr.length > 1) {
+//     let first = nameArr[0]
+//     let second = nameArr[1]
+//     seconde = second.char
+//   }
+// }
 // doc 打包成文档
 gulp.task('doc', (cb) => {
   return gulp
@@ -107,7 +117,7 @@ gulp.task('vuepress', (cb) => {
   return gulp
     .src('./docs/.vuepress/enhanceApp_orgin.js')
     .pipe(
-      replace(/gulp==(\w+)/g, function (match, p1, p2) {
+      replace(/gulp==(\w+)/g, function (match, p1) {
         var str = 'enhanceApp_origin由构建出来\n\n'
         // console.log(match, p1, p2)
         if (p1 === 'import') {
@@ -131,3 +141,45 @@ gulp.task('vuepress', (cb) => {
     .pipe(rename('enhanceApp_build.js'))
     .pipe(gulp.dest('./docs/.vuepress/'))
 })
+// gulpStart::demo-button-base::gulpEnd
+gulp.task('home', (cb) => {
+  return gulp
+    .src('./src/views/home_origin.vue')
+    .pipe(
+      replace(/(.*gulpStart::(.*)::gulpEnd.*)/g, function (match, p1, p2) {
+        // console.log(match)
+        // console.log(p2)
+        var str = ''
+        let mode = p2.split('-')
+        // html 引入组件 如 <button-demo-base></button-demo-base>
+        if (mode.length > 1) {
+          let n1 = mode[0]
+          let n2 = `${mode[1]}-${mode[2]}`
+          // 转换成首字母大写并保存
+          homeNeedComponents.push(`${n1}-${n2}`)
+          str += `    <${n1}-${n2}></${n1}-${n2}>\n`
+        }
+        if (mode.length === 1) {
+          if (mode[0] === 'import') {
+            _.each(homeNeedComponents, function (item) {
+              let arr = item.split('-')
+              let itemName = _.upperFirst(_.camelCase(item))
+              let itemPath = `'docs/.vuepress/components/${arr[0]}/${arr[1]}-${arr[2]}'`
+              str += `import ${itemName} from ${itemPath}\n`
+            })
+          }
+          if (mode[0] === 'init') {
+            _.each(homeNeedComponents, function (item) {
+              let itemName = _.upperFirst(_.camelCase(item))
+              str += `    [${itemName}.name]: ${itemName}\n`
+            })
+          }
+        }
+        return str
+      })
+    )
+    .pipe(rename('Home_build.vue'))
+    .pipe(gulp.dest('./src/views'))
+})
+// 合并任务
+// gulp.task('buildDoc', ['doc', 'vuepress'])

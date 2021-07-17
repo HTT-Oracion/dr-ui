@@ -8,7 +8,7 @@
 
 <script>
 // @ is an alias to /src
-
+// import  from '../../docs/.vuepress/components/button/demo-base'
 export default {
   name: 'Home',
   components: {},
