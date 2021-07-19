@@ -8,24 +8,66 @@
 @mixin b($block) {
   $B: $namespace + '-' + $block !global;
 
-  .#{$B} {
+  .#{$B} { // . dr - button
     @content;
   }
 }
 
-//etc
+// e使用来加如 __header的mixins , 里面有@each 是因为可以传入一个数组 如[header,footer]
+// 先通过 循环获取 currentSelector, 如
+//  @include b(button) {
+//     @include e(header) {
 
+//     }
+//  } 
+// =====>  .dr-button__header
+
+// (如果)带有如伪类:,--,is-,这些,会把这些伪类也加上去
+// .page {
 // @include b(button) {
-//   @include e(header) {
+//   color: red;
+//   &:hover,
+//   &--primary {
+//       @include e([header,footer]) {
+//       color: green;
 //   }
+//  }
 // }
-// => .dr-button__header
+//}
+// =====>.page .dr-button { color: red; } 
+//       .page .dr-button:hover .dr-button__header ,.page .dr-button:hover .dr-button__footer{}
+// 下面的注释以 @include e[header] 作为例子
 @mixin e($element) {
   $E: $element !global;
   $selector: &;  // 父级选择器
   $currentSelector: ""; // 当前选择器
 
   @each $unit in $element {
-    $currentSelector: #{$currentSelector} + '.' + $B + $element-separator + $unit + ','
+    // . + dr-button __ header
+    $currentSelector: #{$currentSelector + '.' + $B + $element-separator + $unit + ','};
+  }
+  @if hasSpecialTag($selector) {
+    // 把父级节点转换成根节点
+    @at-root {  //.page {
+      #{$selector} { // .dr-button:hover {
+         #{$currentSelector} { // .dr_button__header
+           @content;
+         }
+      }
+    }
+  }
+}
+
+@mixin m($modifier) {
+  $selector: &;
+  $currentSelector: "";
+  @each $unit in $modifier {
+    // . dr-button -- primary
+    $currentSelector: #{$currentSelector + '.' + $B + $modifier-separator + $unit + ','};
+  }
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
   }
 }
