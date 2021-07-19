@@ -1,0 +1,38 @@
+/*==================变量==================*/
+
+// 颜色
+$text-color-default: #252525;
+$primary-color: #03a9f4;
+$success-color: #41b883;
+$danger-color: #ec4141;
+$warning-color:#e6a23c;
+$info-color: #bbb;
+$white-color: #fff;
+
+
+// 边框
+$border-default: 1px solid #ddd;
+
+// 尺寸: large  default small
+// 字体
+$font-size-large: 20px;
+$font-size-default: 16px;
+$font-size-small: 14px;
+
+// 圆角
+$border-radius-circle: 50%;
+$border-radius-large: 8px;
+$border-radius-default: 4px;
+$border-radius-small: 2px;
+
+// 阴影
+$box-shadow-defualt: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+// 浅色投影
+$box-shadow-light: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+
+
+// 公共样式
+
+.dr-button-circle {
+  border-radius: $border-radius-circle;
+}

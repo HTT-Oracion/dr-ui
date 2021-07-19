@@ -1,0 +1,44 @@
+@import './config';
+
+//*=================函数======================*//
+
+@function selectorToString($selector) {
+  $selector: inspect(selector);  // "dr-button__primary" 
+  $selector: str-slice(selector, 2,-2); // => dr-button__primary
+  @return $selector;
+}
+
+// 是否包含装饰器, 根据是否有修饰符 -- 判断
+@function hasModifier($selector) {
+  $selector: selectorToString($selector);
+  @if(str-index($selector,$modifier-separator)){
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+// 是否有状态 根据 .is- 判断
+@function hasState($selector) {
+  $selector: selectorToString($selector);
+  @if(str-index($selector, '.' + $state-prefix)) {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+// 是否有伪类 根据 : 判断
+@function hasPesudo($selector) {
+  $selector: selectorToString($selector);
+  @if(str-index($selector, ':')) {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+
+@function hasSpecialTag($selector) {
+  @return hasModifier($selector) or hasState($selector) or hasPesudo($selector);
+}

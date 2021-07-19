@@ -1,0 +1,31 @@
+@import './config.scss';
+@import './function.scss';
+@import '../common/var.scss';
+
+//*=================BEM======================*//
+
+// etc : b(button) => .dr-button {}
+@mixin b($block) {
+  $B: $namespace + '-' + $block !global;
+
+  .#{$B} {
+    @content;
+  }
+}
+
+//etc
+
+// @include b(button) {
+//   @include e(header) {
+//   }
+// }
+// => .dr-button__header
+@mixin e($element) {
+  $E: $element !global;
+  $selector: &;  // 父级选择器
+  $currentSelector: ""; // 当前选择器
+
+  @each $unit in $element {
+    $currentSelector: #{$currentSelector} + '.' + $B + $element-separator + $unit + ','
+  }
+}
