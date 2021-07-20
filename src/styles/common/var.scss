@@ -1,6 +1,7 @@
 /*==================变量==================*/
 
-// 颜色
+// 颜色 规范: $--color--white
+
 $text-color-default: #252525;
 $primary-color: #03a9f4;
 $success-color: #41b883;
@@ -9,21 +10,37 @@ $warning-color:#e6a23c;
 $info-color: #bbb;
 $white-color: #fff;
 
+// color
+$--color--primary: #03a9f4;
+$--color--success: #41b883;
+$--color--danger: #ec4141;
+$--color--warning: #e6a23c;
+$--color--info: #bbb;
+
+$--color--white: #fff;
+$--color--black: #000;
+$--color--gray: #999;
+$--color-text-default: #252525;
 
 // 边框
-$border-default: 1px solid #ddd;
+$--border-default: 1px solid #ddd;
 
 // 尺寸: large  default small
 // 字体
-$font-size-large: 20px;
-$font-size-default: 16px;
-$font-size-small: 14px;
+$--font-size-extra-large: 20px; 
+$--font-size-large: 16px;
+$--font-size-default: 14px;
+$--font-size-small: 12px;
+
+// padding
+$--button-padding-vertical: 12px;
+$--button-padding-horizontal: 20px;
 
 // 圆角
-$border-radius-circle: 50%;
-$border-radius-large: 8px;
-$border-radius-default: 4px;
-$border-radius-small: 2px;
+$--border-radius-circle: 50%;
+$--border-radius-large: 8px;
+$--border-radius-default: 4px;
+$--border-radius-small: 2px;
 
 // 阴影
 $box-shadow-defualt: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
