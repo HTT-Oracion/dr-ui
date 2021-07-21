@@ -118,16 +118,16 @@ gulp.task('vuepress', (cb) => {
     .src('./docs/.vuepress/enhanceApp_orgin.js')
     .pipe(
       replace(/gulp==(\w+)/g, function (match, p1) {
-        var str = 'enhanceApp_origin由构建出来\n\n'
+        var str = 'enhanceApp_origin由构建出来\n'
         // console.log(match, p1, p2)
         if (p1 === 'import') {
           for (let k in components) {
             if (excludedComponents.indexOf(k) === -1) {
               needComponents.push(k)
             }
-            str += `import ${k} from './src/${components[k]}'\n`
+            str += `import ${k} from '../../src/${components[k]}'\n`
           }
-          console.log(str)
+          // console.log(str)
         }
 
         if (p1 === 'use') {
@@ -138,7 +138,7 @@ gulp.task('vuepress', (cb) => {
         return str
       })
     )
-    .pipe(rename('enhanceApp_build.js'))
+    .pipe(rename('enhanceApp.js'))
     .pipe(gulp.dest('./docs/.vuepress/'))
 })
 // gulpStart::demo-button-base::gulpEnd
@@ -180,8 +180,8 @@ gulp.task('home', (cb) => {
         return str
       })
     )
-    .pipe(rename('Home_build.vue'))
+    .pipe(rename('Home.vue'))
     .pipe(gulp.dest('./src/views'))
 })
 // 合并任务
-// gulp.task('buildDoc', ['doc', 'vuepress'])
+gulp.task('buildDoc', gulp.series('doc', 'vuepress'))
