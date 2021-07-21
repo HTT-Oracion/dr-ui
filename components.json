@@ -1,5 +1,6 @@
 {
   "DemoBlock":"components/demo-block/index.js",
   "button": "components/button/index.js",
-  "buttonGroup": "components/button-group/index.js"
+  "buttonGroup": "components/button-group/index.js",
+  "input": "components/input/index.js"
 }
