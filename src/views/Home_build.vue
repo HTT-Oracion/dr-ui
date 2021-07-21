@@ -15,6 +15,7 @@ export default {
   name: 'HomeOrigin',
   components: {
     [ButtonDemoBase.name]: ButtonDemoBase
+    // ButtonDemoBase
   },
   data() {
     return {

@@ -15,6 +15,10 @@ Button组件的基本用法
 
 ```vue
  <dr-button>默认按钮</dr-button>
+ <dr-button>默认按钮</dr-button>
+ <dr-button>默认按钮</dr-button>
+ <dr-button>默认按钮</dr-button>
+ <dr-button>默认按钮</dr-button>
 
 <script>
 </script>

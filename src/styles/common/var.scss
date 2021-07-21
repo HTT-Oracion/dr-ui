@@ -21,11 +21,11 @@ $--color--white: #fff;
 $--color--black: #000;
 $--color--gray: #999;
 $--color-text-default: #252525;
-
+$--color-text-placeholder:#C0C4CC;
 // 边框
 $--border-default: 1px solid #ddd;
 
-// 尺寸: large  default small
+// 尺寸: medium small mini
 // 字体
 $--font-size-extra-large: 20px; 
 $--font-size-large: 16px;
@@ -35,6 +35,16 @@ $--font-size-small: 12px;
 // padding
 $--button-padding-vertical: 12px;
 $--button-padding-horizontal: 20px;
+// padding-medium
+$--button-padding-medium-vertical: 10px;
+$--button-padding-medium--horizontal: 20px;
+// padding-small
+$--button-padding-small-vertical: 9px;
+$--button-padding-small--horizontal: 15px;
+// padding-mini
+$--button-padding-mini-vertical: 7px;
+$--button-padding-mini--horizontal: 15px;
+
 
 // 圆角
 $--border-radius-circle: 50%;
@@ -43,13 +53,13 @@ $--border-radius-default: 4px;
 $--border-radius-small: 2px;
 
 // 阴影
-$box-shadow-defualt: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+$--box-shadow-defualt: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
 // 浅色投影
-$box-shadow-light: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+$--box-shadow-light: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 
 
 // 公共样式
 
-.dr-button-circle {
-  border-radius: $border-radius-circle;
-}
+// .dr-button-circle {
+//   border-radius: $border-radius-circle;
+// }

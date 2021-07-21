@@ -64,15 +64,21 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ```scss
   // 从位置2截取到位置-2
   // 起始为1，即a
-  str-slice("abcd",2,-2) // bc
+  $a:str-slice("abcd",2,-2) // bc
 ```
 
 - str-index(string,substring)
 返回substring在string的首次出现位置
 ```scss
-  str-index(abcd,a) //1
-  str-index(abcd,x) // null
+  $a:str-index(abcd,a) //1
+  $a:str-index(abcd,x) // null
 ```
 
-- inspect
-返回
+- inspect 
+返回 字符串
+
+```scss
+// 如果传入的是 &, 而&如果表示的是 dr-button
+// => "dr-button"
+$selector: inspect($selector) 
+```

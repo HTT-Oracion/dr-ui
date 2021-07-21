@@ -1,6 +1,10 @@
 <template>
    <demo-block :noBorder="false">
-     <dr-button>默认按钮</dr-button>
+     <dr-button>default</dr-button>
+     <dr-button type="primary">primary</dr-button>
+     <dr-button type="danger">danger</dr-button>
+     <dr-button type="warning">warning</dr-button>
+     <dr-button type="info">info</dr-button>
    </demo-block>
 </template>
 
@@ -8,7 +12,7 @@
 //script--ignore--start
 
 export default {
-  name: 'button-demo-base'
+  name: 'ButtonDemoBase'
 }
 //script--ignore--end
 </script>

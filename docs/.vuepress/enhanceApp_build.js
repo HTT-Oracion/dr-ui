@@ -4,6 +4,7 @@ import DemoBlock from './src/components/demo-block/index.js'
 import button from './src/components/button/index.js'
 import buttonGroup from './src/components/button-group/index.js'
 
+import '../../src/styles/index.scss'
 // do something...
 
 export default ({

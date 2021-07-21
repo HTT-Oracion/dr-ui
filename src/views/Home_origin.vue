@@ -4,7 +4,6 @@
     <h2>{{ msg }}</h2>
     <dr-button>123</dr-button>
     <!-- gulpStart::button-demo-base::gulpEnd -->
-    <!-- gulpStart::button-demo-base::gulpEnd -->
   </div>
 </template>
 

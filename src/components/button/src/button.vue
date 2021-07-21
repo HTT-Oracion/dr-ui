@@ -9,11 +9,11 @@
       type ? 'dr-button--' + type : '',
       buttonSize ? 'dr-button--' + buttonSize : '',
       {
-        'dr-button-disabled': disabled,
-        'dr-button-plain': plain,
-        'dr-button-loading': loading,
-        'dr-button-round': round,
-        'dr-button-circle': circle
+        'is-disabled': disabled,
+        'is-plain': plain,
+        'is-loading': loading,
+        'is-round': round,
+        'is-circle': circle
       }
     ]"
   >
@@ -68,6 +68,7 @@ export default {
   },
   methods: {
     handleClick(evt) {
+      if (this.loading || this.disabled) return
       this.$emit('click', evt)
     }
   }

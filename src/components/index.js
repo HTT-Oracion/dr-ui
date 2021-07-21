@@ -1,7 +1,7 @@
 import Button from './button'
 import ButtonGroup from './button-group'
-
-const components = [Button, ButtonGroup]
+import DemoBlock from './demo-block'
+const components = [Button, ButtonGroup, DemoBlock]
 
 const install = (Vue) => {
   components.map((component) => {

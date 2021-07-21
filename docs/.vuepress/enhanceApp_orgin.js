@@ -1,5 +1,6 @@
 //gulp==import
-// do something...
+import '../../src/styles/index.scss'
+
 
 export default ({
   Vue

@@ -4,3 +4,17 @@
   -webkit-user-select: $value;
   -ms-user-select: $value;
 }
+// 清除浮动
+
+@mixin utils-clearfix() {
+  $selector: &;
+
+  @at-root {
+    #{$selector}:before,
+    #{$selector}:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+  }
+}

@@ -10,7 +10,7 @@
   white-space: nowrap;
   cursor: pointer;
   background: $--color--white;
-  border: $border-default;
+  border: $--border-default;
   color: $--color-text-default;
   text-align: center;
   box-sizing: border-box;
@@ -39,84 +39,114 @@
     background-color: mix($--color--white,$--color--primary,90%);
   }
 
-  & [class*='el-icon'] {
+  & [class*='dr-icon'] {
     & + span {
       margin-left: 5px;
     }
   }
-}
-// .dr-button {
-//   font-size: $font-size-default;
-//   color: $white-color;
-//   outline: none;
-//   border: 1px solid $info-color;
-//   text-align: center;
-//   transition: all .2s ease-in-out;
-//   margin: 0 4px;
-//   padding: 10px 20px;
-//   border-radius: $border-radius-default;
-//   &:hover {
-//     opacity: .8;
-//   }
-//   &--default {
-//     background: $white-color;
-//     color: $text-color-default !important;
-//   }
-//   // 尺寸
-//   &--large {
-//     padding: 10px 30px;
-//     font-size: $font-size-large;
-//   }
-//   &--small {
-//     font-size: $font-size-small;
-//     padding: 6px 12px;
-//   }
+  @include when(plain) {
+    &:hover,
+    &:focus {
+      background: $--color--white;
+      border-color: $--color--primary;
+      color: $--color--primary;
+    }
+  }
 
-//   // 颜色
-//   &--primary {
-//     background: $primary-color;
-//     color: $white-color;
-//   }
+  @include when(active) {
+  }
 
-//   &--success {
-//     background: $success-color;
-//   }
+  @include when(disabled) {
+    &,
+    &:hover,
+    &:focus {
+      color: $--color-text-placeholder;
+      cursor: not-allowed;
+      background-image: none;
+      background-color: $--color--white;
+      border-color: $--color-text-placeholder;
+    }
 
-//   &--danger {
-//     background: $danger-color;
-//   }
-
-//   &--warning {
-//     background: $warning-color;
-//   }
+    &.is-plain {
+      &,
+      &:hover,
+      &:focus {
+        background-color: $--color--white;
+        border-color: $--color-text-placeholder;
+        color: $--color-text-placeholder;
+      }
+    }
+  }
   
-//   &--info {
-//     background: $info-color;
-//   }
-// }
+  @include when(loading) {
+    pointer-events: none;
+    position: relative;
+    
+    // 模板
+    &:before {
+     content: '';
+     pointer-events: none;
+     position: absolute;
+     left: -1px;
+     top: -1px;
+     right: -1px;
+     bottom: -1px;
+     border-radius: inherit;
+     background-color: rgba(255,255,255,.35);
+    }
+  }
+  @include when(round) {
+    padding: 12px 23px;
+    border-radius: 20px;
+  }
+  @include when(circle) {
+    border-radius: $--border-radius-circle;
+    padding: $--button-padding-vertical;
+  }
+  // 颜色 type
+  @include m(primary) {
+    @include button-variant($--color--white,$--color--primary,$--color--primary)
+  }
+  @include m(success) {
+    @include button-variant($--color--white,$--color--success,$--color--success)
+  }
+  @include m(danger) {
+    @include button-variant($--color--white,$--color--danger,$--color--danger)
+  }
+  @include m(warning) {
+    @include button-variant($--color--white,$--color--warning,$--color--warning)
+  }
+  @include m(info) {
+    @include button-variant($--color--white,$--color--info,$--color--info)
+  }
+  
+  // 尺寸 size
+  @include m(medium) {
+    @include button-size($--button-padding-medium-vertical,$--button-padding-medium--horizontal,$--font-size-default,$--border-radius-default);
+    @include when(circle) {
+      padding: $--button-padding-medium-vertical;
+    }
+  }
+  @include m(small) {
+    @include button-size($--button-padding-small-vertical,$--button-padding-small--horizontal,$--font-size-small,$--border-radius-default);
+    @include when(circle) {
+      padding: $--button-padding-small-vertical;
+    }
+  }
+  @include m(mini) {
+    @include button-size($--button-padding-mini-vertical,$--button-padding-mini--horizontal,$--font-size-small,$--border-radius-default);
+    @include when(circle) {
+      padding: $--button-padding-mini-vertical;
+    }
+  }
+}
 
-// // .dr-button  {
-// //   &--primary {
-// //     background: $white-color;
-// //     color: $primary-color;
-// //     border-color: $primary-color;
-// //     &:hover {
-// //       background: $primary-color;
-// //       color: $white-color;
-// //     }
-// //   }
-// // }
-// .dr-button-plain{
-//   .dr-button {
-//     &--primary {
-//       @extend .dr-button;
-//       background:$white-color;
-//       color: $primary-color;
-//       border-color: $primary-color;
-//       &:hover {
-//         background: $primary-color;
-//         color: $white-color;
-//       }
-//     }
-//   }
-// }
+@include b(button-group) {
+   @include utils-clearfix();
+   display: inline-block;
+   vertical-align: middle;
+   & > .dr-button {
+     float: left;
+     position: relative;
+   }
+}
